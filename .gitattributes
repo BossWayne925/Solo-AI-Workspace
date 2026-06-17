@@ -1,0 +1,3 @@
+# Normalize line endings: store LF in the repo, regardless of OS.
+# Keeps diffs byte-clean and silences the LF/CRLF warnings on Windows.
+* text=auto eol=lf
