@@ -1,0 +1,14 @@
+# Raw, messy, or private inputs — drop voice memos, screenshots, scraped notes here.
+# Never commit these: they're half-baked and often contain private info.
+workspace/raw-ingest/
+
+# OS / editor noise
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+
+# Local AI tool state
+.claude/
+.gemini/
