@@ -2,7 +2,7 @@
 
 > Patterns, not one-offs. When something performs (or flops), write down *why* you
 > think it did. Read this before planning a week so you make more of what works.
-> The `review` skill appends here. Newest at the top.
+> **Stage 05 (review)** appends here. Newest at the top.
 
 <!-- Format:
 ## YYYY-MM-DD — <observation in one line>

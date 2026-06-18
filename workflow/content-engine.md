@@ -1,48 +1,56 @@
-# The Content Engine
+# The Content Engine — the pipeline
 
-This is the one workflow this whole workspace exists to run. Five steps. Each is a
-skill in `workspace/skills/`. Run them in order, or jump to the one you need.
+This workspace runs **one workflow**, expressed the ICM way: as numbered stage
+folders. The folder structure *is* the workflow. You run the stages in order,
+and each stage's `output/` feeds the next stage's input — a Unix-style pipeline.
 
 ```
-   capture-idea  →  plan-week  →  write-piece  →  repurpose  →  review
-   raw → angle      pick what     angle →         1 piece →     log it +
-                    to make       finished        many          learn from it
-                                  draft           formats
-        ▲                                                          │
-        └───────────────── memory makes next week better ─────────┘
+ 01_capture  →  02_plan  →  03_create  →  04_repurpose  →  05_review
+  raw → ideas    ideas →     plan →        anchor →         log + learn
+                 plan        draft         many variants    (writes to memory)
+       │                                                          │
+       │            ┌─── memory feeds planning ──────────────────┘
+       └────────────┘   (Stage 05's output is Stage 02's input next week)
 ```
 
-## Run it for the first time
+Each arrow is a real file handoff:
+`01_capture/output/ideas.md` → `02_plan/output/week-plan.md` →
+`03_create/output/<slug>.md` → `04_repurpose/output/variants.md` →
+Stage 05 → `memory/published.md` + `memory/what-worked.md`.
 
-> Haven't run `BUILD.md` yet? Do that first — these skills read the `profile.md`
-> and `voice.md` it generates. Without them, drafts won't sound like you.
+## How to run a stage
 
-A first full loop, start to finish, takes about an hour:
+Tell your AI which stage you're on. It reads `CLAUDE.md` (the rules), then that
+stage's `context.md`, then does only that job:
 
-1. **Capture** — dump everything in your head from the week. Tell your AI:
-   *"Run the `capture-idea` skill on this: …"* and paste the mess. Get back sharp angles.
-2. **Plan** — *"Run `plan-week`."* Pick an anchor piece + a few supporting ones,
-   sized to what you can actually finish.
-3. **Create** — *"Run `write-piece` on the anchor."* Get hook options, pick one,
-   get a finished draft in your voice.
-4. **Repurpose** — *"Run `repurpose` on that."* Turn the one anchor into 5–8
-   platform-native pieces. This is the leverage step — don't skip it.
-5. **Review** — once things go live: *"Run `review`."* Log what shipped, and when
-   results come in, capture what worked.
+> *"Read `01_capture/context.md` and run it on this: …"* (paste your raw notes)
 
-## Run it every week (the rhythm)
+After each stage the AI **stops, summarizes, and waits for you** (human-in-the-loop).
+You review the `output/`, then move to the next stage. Nothing runs end-to-end
+unattended — that's by design.
 
-Once it's set up, the weekly loop is fast because memory does the heavy lifting:
+## First time?
 
-- **Monday (15 min):** `plan-week`. It already knows what worked — lean into it.
-- **Mid-week (the real work):** `write-piece` on the anchor, then `repurpose`.
-- **Friday (10 min):** `review`. Log the week, note any pattern.
+> Run `BUILD.md` first if you haven't — the stages read the `profile.md` and
+> `memory/voice.md` it generates. Without them, drafts won't sound like you.
 
-Each pass leaves `voice.md`, `published.md`, and `what-worked.md` a little richer.
-By month two, the AI plans and writes more like you than it did on day one — because
-it has a memory, and most tools don't.
+A full first loop, start to finish, takes about an hour:
+
+1. **01_capture** — dump everything in your head; get back sharp angles → `output/ideas.md`
+2. **02_plan** — pick an anchor + supporting pieces, sized to what you can finish → `output/week-plan.md`
+3. **03_create** — draft the anchor in your voice (hook options first) → `output/<slug>.md`
+4. **04_repurpose** — turn the one anchor into 5–8 platform-native pieces → `output/variants.md`
+5. **05_review** — once it's live, log it and capture what worked → writes to `memory/`
+
+## The weekly rhythm
+
+Memory does the heavy lifting, so the loop gets fast:
+- **Monday (15 min):** Stage 02. It already knows what worked — lean into it.
+- **Mid-week:** Stage 03, then Stage 04.
+- **Friday (10 min):** Stage 05. Log the week, note any pattern.
 
 ## The one rule
-**Always feed the review step.** It's tempting to skip it — you've already
-published, you're tired. But `review` is the only step that makes the system
-*compound* instead of just repeat. Skip writing, skip planning, never skip review.
+**Never skip Stage 05.** It's the only stage that writes back to memory — the only
+thing that makes the system *compound* instead of just repeat. Skip writing, skip
+planning, never skip review. (And every stage logs one line to
+`memory/session-log.md`, so you can always see what's been done.)

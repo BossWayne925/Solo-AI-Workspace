@@ -1,6 +1,6 @@
 # BUILD — set up your Solo AI Workspace
 
-**Run this once.** Paste everything below the line into your AI (Claude or Gemini) while it has access to this folder. It will interview you with ~8 questions, then write your personal files: `workspace/profile.md` and `workspace/memory/voice.md`, and seed `workspace/memory/MEMORY.md`.
+**Run this once.** Paste everything below the line into your AI (Claude or Gemini) while it has access to this folder. It will interview you with ~8 questions, then write your personal files: `profile.md` and `memory/voice.md`, and seed `memory/MEMORY.md`.
 
 Takes about 10 minutes. You only do it once — after that, the workspace remembers.
 
@@ -8,7 +8,7 @@ Takes about 10 minutes. You only do it once — after that, the workspace rememb
 
 ---
 
-You are setting up a **Solo AI Workspace** — a small content system for a solopreneur. Your job in this session is to interview the user, then generate two personalized files that everything else in this workspace will read.
+You are setting up a **Solo AI Workspace** — a small content system for a solopreneur, built on the Interpretable Context Methodology (ICM). Before you start, read `CLAUDE.md` so you understand the structure you're setting up. Your job in this session is to interview the user, then generate the personalized truth files that every stage of the workspace will read.
 
 ## How to run the interview
 
@@ -31,11 +31,11 @@ Keep it warm and fast. This should feel like a sharp friend setting you up, not 
 
 Once you have the answers, write these files. Use the user's own words where you can; don't corporate-ize their voice.
 
-### 1. `workspace/profile.md`
+### 1. `profile.md`
 
-Fill the template that already exists at that path. Replace every `<...>` placeholder with real content from the interview. Keep it to one screen — this file gets read on every task, so it must stay tight. Remove the example block at the bottom once you've filled the real sections.
+Fill the template that already exists at that path (repo root). Replace every `<...>` placeholder with real content from the interview. Keep it to one screen — this file gets read on every task, so it must stay tight. Remove the example block at the bottom once you've filled the real sections.
 
-### 2. `workspace/memory/voice.md`
+### 2. `memory/voice.md`
 
 This is the most important file. Capture:
 - **3 voice words** and what each means in practice.
@@ -45,12 +45,12 @@ This is the most important file. Capture:
 
 Derive the Do/Don't from their actual samples, not generic advice. If they hate the word "leverage," write that down.
 
-### 3. `workspace/memory/MEMORY.md`
+### 3. `memory/MEMORY.md`
 
-Update the index so it lists the now-filled `voice.md`, `published.md`, and `what-worked.md` with one-line descriptions. Add 2–3 starter facts under "Business facts" pulled from the interview (what they do, who for, primary platform).
+Update the "Business facts" section with 2–3 starter facts pulled from the interview (what they do, who for, primary platform). Leave the file list and ICM note intact.
 
 ## When you're done
 
-Show the user a quick summary: their voice in 3 words, their pillars, and their primary platform. Then point them to **`workflow/content-engine.md`** to run their first loop.
+Show the user a quick summary: their voice in 3 words, their pillars, and their primary platform. Then point them to **`workflow/content-engine.md`** for the pipeline overview, and tell them to start at **Stage 01 (`01_capture/`)**.
 
-Do **not** touch the files in `workspace/skills/` — those are pre-written and universal. You're only personalizing the truth files (`profile.md`, `voice.md`) and the memory index.
+Do **not** touch the numbered stage folders (`01_capture/` … `05_review/`) or `CLAUDE.md` — the stage context files are pre-written and universal (that's the ICM design: the stages are the same for everyone, only *you* are personalized). You're only filling the truth files (`profile.md`, `memory/voice.md`) and the memory index.

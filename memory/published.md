@@ -1,8 +1,8 @@
 # Published log
 
 > Append a line every time something goes live. This stops you repeating ideas,
-> lets the AI continue threads ("part 2 of…"), and feeds the `review` skill.
-> Newest at the top. The `review` skill writes here for you.
+> lets the AI continue threads ("part 2 of…"), and feeds planning (Stage 02).
+> Newest at the top. **Stage 05 (review)** writes here for you.
 
 <!-- Format:
 ## YYYY-MM-DD — <title or hook>
